@@ -1,4 +1,4 @@
-baseURL = "https://ting-y.github.io/"
+baseURL = "https://tingy.dev/"
 languageCode = "en-us"
 title = "The DevOps Journey"
 theme = "etch"
