@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Saturday coding blog</title>
+    <link>https://ting-y.github.io/posts/</link>
+    <description>Recent content in Posts on Saturday coding blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Apr 2023 09:03:20 -0400</lastBuildDate>
+    
+	<atom:link href="https://ting-y.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Migrating KEDA Custom Resource Definitions (CRDs) and ScaledObjects API version </title>
+      <link>https://ting-y.github.io/migrating-keda-custom-resource-definitions-crds-and-scaledobjects-api-version/</link>
+      <pubDate>Thu, 06 Apr 2023 09:03:20 -0400</pubDate>
+      
+      <guid>https://ting-y.github.io/migrating-keda-custom-resource-definitions-crds-and-scaledobjects-api-version/</guid>
+      <description>&lt;p&gt;KEDA (Kubernetes-based Event Driven Autoscaling) is an open-source project that provides event-driven autoscaling for Kubernetes workloads. As KEDA evolves, sometimes it&amp;rsquo;s necessary to migrate the Custom Resource Definitions (CRDs) and ScaledObjects used by KEDA to enable new features or changes. This guide provides step-by-step instructions for migrating KEDA CRDs and ScaledObjects to a new API version.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;Before migrating KEDA CRDs and ScaledObjects, ensure that you have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A Kubernetes cluster with KEDA installed&lt;/li&gt;
+&lt;li&gt;Access to the Kubernetes manifests or Helm chart for KEDA installation&lt;/li&gt;
+&lt;li&gt;Understanding of the differences between the current and the new API versions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;steps&#34;&gt;Steps&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Backup the current KEDA CRDs data by running the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl get crd keda.k8s.io -o yaml &amp;gt; keda-crd-backup.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;This command saves the current KEDA CRDs to a file named &lt;code&gt;keda-crd-backup.yaml&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Backup the current ScaledObjects data by running the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl get scaledobject.keda.io --all-namespaces -o yaml &amp;gt; keda-scaledobject-backup.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;This command saves the current KEDA ScaledObjects to a file named &lt;code&gt;keda-scaledobject-backup.yaml&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Open the Kubernetes manifest or Helm chart file that contains the KEDA ScaledObjects to be migrated.&lt;/li&gt;
+&lt;li&gt;Find the API version of the ScaledObjects in the file and update the API version to &lt;code&gt;keda.sh/v1Alpha&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Deploy the updated Kubernetes manifest or Helm chart&lt;/li&gt;
+&lt;li&gt;Verify that the new CRDs and ScaledObjects have been created by running the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl get scaledobject.keda.sh --all-namespaces
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;These commands list all KEDA ScaledObjects across all namespaces, respectively. Confirm that the ScaledObjects listed have the new API version.&lt;/li&gt;
+&lt;li&gt;Delete the old CRDs and ScaledObjects by running the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl delete -f keda-crd-backup.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl delete -f keda-scaledobject-backup.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Congratulations! You&amp;rsquo;ve successfully migrated KEDA CRDs and ScaledObjects to a new API version.&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    
+  </channel>
+</rss>

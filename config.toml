@@ -1,0 +1,25 @@
+baseURL = "https://ting-y.github.io/"
+languageCode = "en-us"
+title = "Saturday coding blog"
+theme = "etch"
+
+[params]
+  description = "Your site description"
+  copyright = "Copyright © 2023 Ting Yang"
+  dark = "off"
+  highlight = true
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "posts"
+    title = "posts"
+    url = "/"
+    weight = 10
+
+[permalinks]
+  posts = "/:title/"
+
+[markup.goldmark.renderer]
+  # Allows HTML in Markdown
+  unsafe = true
