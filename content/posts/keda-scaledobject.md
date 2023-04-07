@@ -1,5 +1,5 @@
 ---
-title: "Migrating KEDA Custom Resource Definitions (CRDs) and ScaledObjects API version
+title: "Migrating KEDA ScaledObjects API version
 "
 date: 2023-04-06T09:03:20-04:00
 draft: false

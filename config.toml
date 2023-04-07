@@ -1,4 +1,4 @@
-baseURL = "https://tingy.dev/"
+baseURL = "https://tingy.dev"
 languageCode = "en-us"
 title = "The DevOps Journey"
 theme = "etch"
